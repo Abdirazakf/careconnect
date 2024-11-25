@@ -11,8 +11,6 @@ CareConnect is a React Native app designed to provide live video streaming and m
 ---
 
 ## **Screenshots**
-Include screenshots here to showcase your app’s UI. Example:
-![LiveStream Screen](https://via.placeholder.com/500x300.png?text=Screenshot)
 
 ---
 
@@ -35,7 +33,9 @@ Include screenshots here to showcase your app’s UI. Example:
    npm install
 3. Insatll Expo CLI(if not already installed):
    ```bash
-   npm insatll -g expo-cli
+   npm install -g expo-cli
+
+---
 
 ## **Running the App**
 
@@ -44,9 +44,13 @@ Include screenshots here to showcase your app’s UI. Example:
    npm start
 2. Use Expo Go app and scan the QR code to test the app
 
+---
+
 ## **Configuration**
 
 1. Replace <pi-ip-address> and <port> in LiveStream.js with your backend server’s IP address and port.
+
+---
 
 ## **Contributions**
 
@@ -63,9 +67,11 @@ Contributions are always welcome, follow these steps to contribute:
    git push origin feature-name
 5. Open a pull request
 
+---
+
 ## **Contact**
 
 For any questions or suggestions, feel free to reach out:
 Email: farahabdirazak13@gmail.com
-Github: Abdirazakf
+Github: [Abdirazakf](https://github.com/Abdirazakf)
    
