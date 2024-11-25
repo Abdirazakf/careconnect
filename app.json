@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "CareConnect",
+    "slug": "careconnect",
+    "version": "1.0.0",
+    "newArchEnabled": true,
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "b03461bd-78bc-4670-b5d7-20eff8829c26"
+      }
+    },
+    "plugins": [
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ]
+    ]
+  }
+}
