@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# **CareConnect**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CareConnect is a React Native app designed to provide live video streaming and music controls. The app is tailored for baby monitoring, featuring live streams and the ability to play and stop lullabies remotely.
 
-## Available Scripts
+## **Features**
+- 📹 **Live Video Streaming**: Stream real-time video directly from a connected camera.
+- 🎵 **Music Controls**: Play or stop lullabies for a comforting experience.
+- ⚡ **Modern UI**: Clean and intuitive interface with easy navigation.
+- 🌐 **Network Communication**: Send commands to a backend server for remote control.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## **Screenshots**
+Include screenshots here to showcase your app’s UI. Example:
+![LiveStream Screen](https://via.placeholder.com/500x300.png?text=Screenshot)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Technologies Used**
+- **React Native**: For building the mobile app.
+- **Expo**: For development and debugging.
+- **expo-av**: For video streaming.
+- **Fetch API**: For communication with the backend server.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Installation**
 
-### `npm run build`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/careconnect.git
+   cd careconnect
+2. Install Dependencies:
+   ```bash
+   npm install
+3. Insatll Expo CLI(if not already installed):
+   ```bash
+   npm insatll -g expo-cli
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Running the App**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Start the development server:
+   ```bash
+   npm start
+2. Use Expo Go app and scan the QR code to test the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **Configuration**
 
-### `npm run eject`
+1. Replace <pi-ip-address> and <port> in LiveStream.js with your backend server’s IP address and port.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## **Contributions**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are always welcome, follow these steps to contribute:
+1. Fork the repository
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-name
+3. Commit your changes:
+   ```bash
+   git commit -m "Add feature name"
+4. Push to the branch
+   ```bash
+   git push origin feature-name
+5. Open a pull request
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **Contact**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For any questions or suggestions, feel free to reach out:
+Email: farahabdirazak13@gmail.com
+Github: Abdirazakf
+   
