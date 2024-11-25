@@ -74,4 +74,3 @@ Contributions are always welcome, follow these steps to contribute:
 For any questions or suggestions, feel free to reach out:
 Email: farahabdirazak13@gmail.com
 Github: [Abdirazakf](https://github.com/Abdirazakf)
-   
