@@ -1,21 +1,21 @@
 import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { NativeBaseProvider, extendTheme } from 'native-base';
-import { SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ScaledSheet, moderateScale } from 'react-native-size-matters';
+import { Ionicons } from 'react-native-vector-icons';
 import Dashboard from './src/components/Dashboard';
+import Notifications from './src/components/Notifications';
+
+const Tab = createBottomTabNavigator();
 
 const theme = extendTheme({
   colors: {
     primary: {
       50: '#e3f2f9',
-      100: '#c5e4f3',
-      200: '#a2d4ec',
-      300: '#7ac1e4',
-      400: '#47a9da',
-      500: '#0088cc', // Primary color
-      600: '#007ab8',
-      700: '#006ba1',
+      500: '#0088cc',
       800: '#005885',
-      900: '#003f5e',
     },
   },
 });
@@ -23,9 +23,39 @@ const theme = extendTheme({
 export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Dashboard />
+      <SafeAreaView style={styles.safeArea}>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                if (route.name === 'Dashboard') {
+                  iconName = focused ? 'home' : 'home-outline';
+                } else if (route.name === 'Notifications') {
+                  iconName = focused ? 'notifications' : 'notifications-outline';
+                }
+
+                return <Ionicons name={iconName} size={moderateScale(size)} color={color} />;
+              },
+              tabBarActiveTintColor: '#0088cc',
+              tabBarInactiveTintColor: 'gray',
+              headerShown: false,
+            })}
+          >
+            <Tab.Screen name="Dashboard" component={Dashboard} />
+            <Tab.Screen name="Notifications" component={Notifications} />
+          </Tab.Navigator>
+        </NavigationContainer>
       </SafeAreaView>
     </NativeBaseProvider>
   );
 }
+
+const styles = ScaledSheet.create({
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: '16@ms',
+    backgroundColor: '#f9f9f9',
+  },
+});

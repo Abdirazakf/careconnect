@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Box, VStack, Heading, Text } from 'native-base';
-import Toast from 'react-native-toast-message';
+import { ScaledSheet, moderateScale } from 'react-native-size-matters';
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // Fetch notifications (replace with your API call)
-    const fetchNotifications = async () => {
-      setNotifications([
-        { id: 1, message: 'Camera detected movement.' },
-        { id: 2, message: 'New update available.' },
-      ]);
-    };
-    fetchNotifications();
+    setNotifications([
+      { id: 1, message: 'Camera detected movement.' },
+      { id: 2, message: 'New update available.' },
+    ]);
   }, []);
 
   return (
-    <Box bg="white" shadow={2} borderRadius="lg" padding="4" mb="4">
-      <Heading fontSize="lg" color="primary.800" mb="2">
+    <Box flex={1} bg="primary.50" padding={moderateScale(16)}>
+      <Heading color="primary.500" fontSize={moderateScale(20)} mb={moderateScale(16)}>
         Notifications
       </Heading>
       <VStack space="2">
         {notifications.map((notif) => (
-          <Text key={notif.id} color="primary.700">
-            {notif.message}
-          </Text>
+          <Box key={notif.id} bg="white" shadow={1} borderRadius="lg" padding={moderateScale(12)} mb="2">
+            <Text fontSize={moderateScale(14)} color="primary.800">
+              {notif.message}
+            </Text>
+          </Box>
         ))}
       </VStack>
     </Box>
