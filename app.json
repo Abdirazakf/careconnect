@@ -4,6 +4,7 @@
     "slug": "careconnect",
     "version": "1.0.0",
     "newArchEnabled": true,
+    "userInterfaceStyle": "automatic",
     "platforms": [
       "ios",
       "android",

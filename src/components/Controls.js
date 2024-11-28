@@ -1,39 +1,32 @@
 import React from 'react';
-import { View, Button, StyleSheet, Text } from 'react-native';
+import { Box, HStack, Button } from 'native-base';
 
 const Controls = () => {
   const sendCommand = async (command) => {
     try {
-      await fetch('http://<pi-ip-address>:<port>/controls', {
+      await fetch('http://<your-ec2-ip>:5000/controls', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command }),
       });
+      alert(`${command} command sent successfully!`);
     } catch (error) {
-      console.error('Error sending command:', error);
+      alert('Failed to send command. Please try again.');
     }
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Music</Text>
-      <Button
-        title="Play Lullaby"
-        onPress={() => sendCommand('play_lullaby')}
-        color="blue"
-      />
-      <Button
-        title="Stop Lullaby"
-        onPress={() => sendCommand('stop_lullaby')}
-        color="red"
-      />
-    </View>
+    <Box bg="white" shadow={2} borderRadius="lg" padding="4">
+      <HStack space="4" justifyContent="center">
+        <Button colorScheme="primary" onPress={() => sendCommand('play_lullaby')}>
+          Play Lullaby
+        </Button>
+        <Button colorScheme="secondary" onPress={() => sendCommand('stop_lullaby')}>
+          Stop Lullaby
+        </Button>
+      </HStack>
+    </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { marginVertical: 10 },
-  heading: { fontSize: 18, marginBottom: 10 },
-});
 
 export default Controls;

@@ -1,17 +1,31 @@
 import React from 'react';
-import "@/global.css";
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { SafeAreaView, ScrollView } from 'react-native';
-import Dashboard from 'components/Dashboard';
+import { NativeBaseProvider, extendTheme } from 'native-base';
+import { SafeAreaView } from 'react-native';
+import Dashboard from './src/components/Dashboard';
 
-function App() {
+const theme = extendTheme({
+  colors: {
+    primary: {
+      50: '#e3f2f9',
+      100: '#c5e4f3',
+      200: '#a2d4ec',
+      300: '#7ac1e4',
+      400: '#47a9da',
+      500: '#0088cc', // Primary color
+      600: '#007ab8',
+      700: '#006ba1',
+      800: '#005885',
+      900: '#003f5e',
+    },
+  },
+});
+
+export default function App() {
   return (
-    <GluestackUIProvider mode="light"><SafeAreaView style={{ flex: 1 }}>
-        <ScrollView>
-          <Dashboard />
-        </ScrollView>
-      </SafeAreaView></GluestackUIProvider>
+    <NativeBaseProvider theme={theme}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Dashboard />
+      </SafeAreaView>
+    </NativeBaseProvider>
   );
 }
-
-export default App;
