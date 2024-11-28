@@ -29,11 +29,11 @@ const LiveStream = () => {
         <Video
           ref={videoRef}
           source={{ uri: 'http://3.95.181.205:5000/hls/output.m3u8' }} // Replace with your server's URL
-          style={styles.video}
           useNativeControls
           resizeMode="contain"
           shouldPlay
           isLooping
+          style={{ width: '100%', height: 300 }}
           onPlaybackStatusUpdate={(status) => {
            if (status.didJustFinish) {
             // Replay the video if it stops
