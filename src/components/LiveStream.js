@@ -7,7 +7,7 @@ const LiveStream = () => {
 
   const sendCommand = async (command) => {
     try {
-      await fetch('http://<pi-ip-address>:<port>/controls', {
+      await fetch('http://10.0.0.145:5000/controls', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command }),
@@ -28,11 +28,18 @@ const LiveStream = () => {
       <View style={styles.videoContainer}>
         <Video
           ref={videoRef}
-          source={{ uri: 'https://www.w3schools.com/html/mov_bbb.mp4' }} // Replace with your server's URL
+          source={{ uri: 'http://3.95.181.205:5000/hls/output.m3u8' }} // Replace with your server's URL
           style={styles.video}
           useNativeControls
           resizeMode="contain"
           shouldPlay
+          isLooping
+          onPlaybackStatusUpdate={(status) => {
+           if (status.didJustFinish) {
+            // Replay the video if it stops
+            videoRef.current.playAsync();
+          }
+        }}
           onError={(error) => console.error('Video error:', error)}
         />
       </View>
