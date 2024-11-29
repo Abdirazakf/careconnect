@@ -61,7 +61,7 @@ CareConnect is a React Native app designed for baby monitoring. It provides live
 
 ## **Configuration**
 
-1. Replace `<pi-ip-address>` and `<port>` in your `LiveStream.js` and `Controls.js` with the IP address and port of your Raspberry Pi backend server:
+1. Replace `<pi-ip-address>` and `<port>` in your `Dashboard.js` with the IP address and port of your Raspberry Pi backend server:
    ```javascript
    const url = "http://<pi-ip-address>:<port>";
    ```
