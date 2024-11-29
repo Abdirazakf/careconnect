@@ -9,7 +9,13 @@ import Dashboard from './src/components/Dashboard';
 import Notifications from './src/components/Notifications';
 import Settings from './src/components/Settings';
 import { moderateScale } from 'react-native-size-matters';
+import 'react-native-url-polyfill/auto'; // Polyfill for `url`
+import { Buffer } from 'buffer'; // Polyfill for `Buffer`
+import process from 'process'; // Polyfill for `process`
 
+// Polyfill setup
+global.Buffer = global.Buffer || Buffer;
+global.process = global.process || process;
 const Tab = createBottomTabNavigator();
 
 // Theme configuration

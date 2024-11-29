@@ -1,11 +1,24 @@
 import React from 'react';
-import { Box, VStack, Heading, Text } from 'native-base';
+import { Box, VStack, Heading, Text, HStack, Button } from 'native-base';
 import { Video } from 'expo-av';
 import { useColorMode } from 'native-base';
 import { ScaledSheet, moderateScale } from 'react-native-size-matters';
 
 const Dashboard = () => {
   const { colorMode } = useColorMode();
+
+  const sendCommand = async (command) => {
+    try {
+      await fetch('http://<your-ec2-ip>:5000/controls', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ command }),
+      });
+      alert(`${command} command sent successfully!`);
+    } catch (error) {
+      alert('Failed to send command. Please try again.');
+    }
+  };
 
   return (
     <Box flex={1} bg={colorMode === 'dark' ? 'gray.800' : 'gray.50'} padding={moderateScale(10)}>
@@ -36,6 +49,31 @@ const Dashboard = () => {
               style={styles.video}
             />
           </Box>
+        </Box>
+
+        {/* Controls Section */}
+        <Box bg="white" shadow={2} borderRadius="lg" padding={moderateScale(16)}>
+          <Heading fontSize={moderateScale(14)} color="primary.800" marginBottom={moderateScale(8)}>
+            Controls
+          </Heading>
+          <HStack space={moderateScale(16)} justifyContent="center">
+            <Button
+              colorScheme="primary"
+              padding={moderateScale(12)}
+              fontSize={moderateScale(14)}
+              onPress={() => sendCommand('play_lullaby')}
+            >
+              Play Lullaby
+            </Button>
+            <Button
+              colorScheme="secondary"
+              padding={moderateScale(12)}
+              fontSize={moderateScale(14)}
+              onPress={() => sendCommand('stop_lullaby')}
+            >
+              Stop Lullaby
+            </Button>
+          </HStack>
         </Box>
       </VStack>
     </Box>
