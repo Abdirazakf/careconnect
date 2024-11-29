@@ -23,7 +23,6 @@ const Dashboard = () => {
   return (
     <Box flex={1} bg={colorMode === 'dark' ? 'gray.800' : 'gray.50'} padding={moderateScale(10)}>
       <VStack space={moderateScale(12)}>
-        {/* Title Section */}
         <Heading
           color={colorMode === 'dark' ? 'white' : 'black'}
           fontSize={moderateScale(18)}
@@ -36,11 +35,16 @@ const Dashboard = () => {
         </Text>
 
         {/* Live Stream Section */}
-        <Box bg="white" shadow={2} borderRadius={moderateScale(8)} padding={moderateScale(10)}>
-          <Heading fontSize={moderateScale(14)} color="primary.800" marginBottom={moderateScale(8)}>
+        <Box
+          bg={colorMode === 'dark' ? 'gray.700' : 'white'}
+          shadow={2}
+          borderRadius={moderateScale(8)}
+          padding={moderateScale(10)}
+        >
+          <Heading fontSize={moderateScale(14)} color={colorMode === 'dark' ? 'white' : 'primary.800'} marginBottom={moderateScale(8)}>
             Live Stream
           </Heading>
-          <Box borderWidth={1} borderColor="primary.200" overflow="hidden" borderRadius="lg">
+          <Box borderWidth={1} borderColor={colorMode === 'dark' ? 'gray.600' : 'primary.200'} overflow="hidden" borderRadius="lg">
             <Video
               source={{ uri: 'http://3.95.181.205:5000/hls/output.m3u8' }}
               resizeMode="contain"
@@ -52,13 +56,18 @@ const Dashboard = () => {
         </Box>
 
         {/* Controls Section */}
-        <Box bg="white" shadow={2} borderRadius="lg" padding={moderateScale(16)}>
-          <Heading fontSize={moderateScale(14)} color="primary.800" marginBottom={moderateScale(8)}>
+        <Box
+          bg={colorMode === 'dark' ? 'gray.700' : 'white'}
+          shadow={2}
+          borderRadius="lg"
+          padding={moderateScale(16)}
+        >
+          <Heading fontSize={moderateScale(14)} color={colorMode === 'dark' ? 'white' : 'primary.800'} marginBottom={moderateScale(8)}>
             Controls
           </Heading>
           <HStack space={moderateScale(16)} justifyContent="center">
             <Button
-              colorScheme="primary"
+              colorScheme={colorMode === 'dark' ? 'light' : 'primary'}
               padding={moderateScale(12)}
               fontSize={moderateScale(14)}
               onPress={() => sendCommand('play_lullaby')}
@@ -66,7 +75,7 @@ const Dashboard = () => {
               Play Lullaby
             </Button>
             <Button
-              colorScheme="secondary"
+              colorScheme={colorMode === 'dark' ? 'light' : 'secondary'}
               padding={moderateScale(12)}
               fontSize={moderateScale(14)}
               onPress={() => sendCommand('stop_lullaby')}
@@ -82,8 +91,8 @@ const Dashboard = () => {
 
 const styles = ScaledSheet.create({
   video: {
-    width: '100%', // Full width of the parent container
-    height: '180@ms', // Dynamically scaled height
+    width: '100%',
+    height: '180@ms',
   },
 });
 

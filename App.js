@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeBaseProvider, extendTheme } from 'native-base';
+import { NativeBaseProvider, extendTheme, useColorMode } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -45,44 +45,69 @@ const colorModeManager = {
   },
 };
 
-export default function App() {
+const App = () => {
   return (
     <NativeBaseProvider theme={theme} colorModeManager={colorModeManager}>
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaWrapper>
         <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-
-                if (route.name === 'Dashboard') {
-                  iconName = focused ? 'home' : 'home-outline';
-                } else if (route.name === 'Notifications') {
-                  iconName = focused ? 'notifications' : 'notifications-outline';
-                } else if (route.name === 'Settings') {
-                  iconName = focused ? 'settings' : 'settings-outline';
-                }
-
-                return <Ionicons name={iconName} size={moderateScale(size)} color={color} />;
-              },
-              tabBarActiveTintColor: '#0088cc',
-              tabBarInactiveTintColor: 'gray',
-              headerShown: false,
-            })}
-          >
-            <Tab.Screen name="Dashboard" component={Dashboard} />
-            <Tab.Screen name="Notifications" component={Notifications} />
-            <Tab.Screen name="Settings" component={Settings} />
-          </Tab.Navigator>
+          <TabNavigator />
         </NavigationContainer>
-      </SafeAreaView>
+      </SafeAreaWrapper>
     </NativeBaseProvider>
   );
-}
+};
+
+// Tab Navigator Component
+const TabNavigator = () => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Dashboard') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Notifications') {
+            iconName = focused ? 'notifications' : 'notifications-outline';
+          } else if (route.name === 'Settings') {
+            iconName = focused ? 'settings' : 'settings-outline';
+          }
+
+          return <Ionicons name={iconName} size={moderateScale(size)} color={color} />;
+        },
+        tabBarActiveTintColor: colorMode === 'dark' ? '#FFFFFF' : '#0088cc', // Adjust based on colorMode
+        tabBarInactiveTintColor: colorMode === 'dark' ? '#AAAAAA' : 'gray',
+        headerShown: false,
+      })}
+    >
+      <Tab.Screen name="Dashboard" component={Dashboard} />
+      <Tab.Screen name="Notifications" component={Notifications} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
+  );
+};
+
+const SafeAreaWrapper = ({ children }) => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <SafeAreaView
+      style={[
+        styles.safeArea,
+        { backgroundColor: colorMode === 'dark' ? '#1A202C' : '#f9f9f9' }, // Adjust based on mode
+      ]}
+    >
+      {children}
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#f9f9f9',
   },
 });
+
+export default App;
