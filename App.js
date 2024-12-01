@@ -77,8 +77,12 @@ const TabNavigator = () => {
 
           return <Ionicons name={iconName} size={moderateScale(size)} color={color} />;
         },
-        tabBarActiveTintColor: colorMode === 'dark' ? '#FFFFFF' : '#0088cc', // Adjust based on colorMode
-        tabBarInactiveTintColor: colorMode === 'dark' ? '#AAAAAA' : 'gray',
+        tabBarActiveTintColor: colorMode === 'dark' ? '#FFFFFF' : '#0088cc', // Active icon color
+        tabBarInactiveTintColor: colorMode === 'dark' ? '#AAAAAA' : 'gray', // Inactive icon color
+        tabBarStyle: {
+          backgroundColor: colorMode === 'dark' ? '#1A202C' : '#FFFFFF', // Adjust background color
+          borderTopColor: colorMode === 'dark' ? '#2D3748' : '#E2E8F0', // Adjust border color
+        },
         headerShown: false,
       })}
     >
@@ -88,6 +92,7 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
+
 
 const SafeAreaWrapper = ({ children }) => {
   const { colorMode } = useColorMode();
