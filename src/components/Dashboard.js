@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const sendCommand = async (command) => {
     try {
-      await fetch('http://<your-ec2-ip>:5000/controls', {
+      await fetch('http://3.95.181.205:5000/controls', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command }),

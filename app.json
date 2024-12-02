@@ -23,6 +23,9 @@
           "supportsPictureInPicture": true
         }
       ]
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.abdirazakfarah.careconnect"
+    }
   }
 }
