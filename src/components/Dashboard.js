@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const sendCommand = async (command) => {
     try {
-      await fetch('http://3.95.181.205:5000/controls', {
+      await fetch('<YOUR IP HERE>', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ command }),
@@ -46,7 +46,7 @@ const Dashboard = () => {
           </Heading>
           <Box borderWidth={1} borderColor={colorMode === 'dark' ? 'gray.600' : 'primary.200'} overflow="hidden" borderRadius="lg">
             <Video
-              source={{ uri: 'http://3.95.181.205:5000/hls/output.m3u8' }}
+              source={{ uri: '<YOUR URL HERE>' }}
               resizeMode="contain"
               useNativeControls
               shouldPlay
