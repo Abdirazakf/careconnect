@@ -10,7 +10,7 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const brokerUrl = 'wss://693754a8789c4419b4d760a2653cd86e.s1.eu.hivemq.cloud:8884/mqtt';
+    const brokerUrl = '<YOUR BROKER HERE>';
     const options = { username: 'gp4pi', password: 'Group4pi', reconnectPeriod: 1000 };
 
     const client = mqtt.connect(brokerUrl, options);
