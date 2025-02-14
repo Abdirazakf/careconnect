@@ -19,6 +19,12 @@
       [
         "expo-video",
         {
+          "ios": {
+            "includeVLCKit": false
+          },
+          "android": {
+            "legacyJetifier": false
+          },
           "supportsBackgroundPlayback": true,
           "supportsPictureInPicture": true
         }
@@ -26,6 +32,9 @@
     ],
     "ios": {
       "bundleIdentifier": "com.abdirazakfarah.careconnect"
+    },
+    "android": {
+      "package": "com.abdirazakfarah.careconnect"
     }
   }
 }

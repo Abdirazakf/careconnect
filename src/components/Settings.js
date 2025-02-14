@@ -1,4 +1,3 @@
-import React from 'react';
 import { VStack, Box, Heading, Switch, Text, useColorMode } from 'native-base';
 import { moderateScale } from 'react-native-size-matters';
 

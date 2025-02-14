@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, VStack, Heading, Text, ScrollView, Button, useColorMode } from 'native-base';
 import { moderateScale } from 'react-native-size-matters';
 import mqtt from 'mqtt/dist/mqtt';
