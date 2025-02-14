@@ -44,21 +44,12 @@ const Dashboard = () => {
             Live Stream
           </Heading>
           <Box borderWidth={1} borderColor={colorMode === 'dark' ? 'gray.600' : 'primary.200'} overflow="hidden" borderRadius="lg">
-<<<<<<< HEAD
-            <Video
-              source={{ uri: '<YOUR URL HERE>' }}
-              resizeMode="contain"
-              useNativeControls
-              shouldPlay
-              style={styles.video}
-=======
             <WebView
               source={{ uri: 'https://peppy-gnome-dfe2a3.netlify.app/' }}
               style={styles.webview}
               allowsFullscreenVideo
               javaScriptEnabled
               domStorageEnabled
->>>>>>> 0ab992d (Bug fixes)
             />
           </Box>
         </Box>
