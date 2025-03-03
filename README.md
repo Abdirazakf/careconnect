@@ -1,50 +1,103 @@
-# Welcome to your Expo app 👋
+# **CareConnect**
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+CareConnect is a React Native app designed for baby monitoring. It provides live video streaming, music playback controls, and a modern, intuitive interface to help parents monitor and soothe their babies.
 
-## Get started
+## **Features**
+- 📹 **Live Video Streaming**: Stream real-time video directly from a connected Raspberry Pi camera.
+- 🎵 **Music Controls**: Play or stop lullabies remotely to comfort your baby.
+- 🌙 **Dark Mode**: Seamlessly switch between light and dark modes for an optimized user experience.
+- ⚡ **Modern UI**: Clean, intuitive interface with smooth navigation.
+- 🌐 **Network Communication**: Send commands to a backend server for remote control.
 
-1. Install dependencies
+---
 
+## **Screenshots**
+*(Add relevant screenshots here for better visualization)*
+
+---
+
+## **Technologies Used**
+- **React Native**: Framework for building cross-platform mobile apps.
+- **Expo**: Development platform for faster debugging and testing.
+- **expo-av**: Library for video playback and streaming.
+- **Fetch API**: Enables communication with the backend server.
+- **NativeBase**: For building a modern and responsive user interface.
+- **React Navigation**: Navigation management for multi-screen flows.
+
+---
+
+## **Installation**
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Abdirazakf/careconnect.git
+   cd careconnect
+   ```
+
+2. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Install Expo CLI (if not already installed)**:
    ```bash
-    npx expo start
+   npm install -g expo-cli
    ```
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## **Running the App**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. **Start the Development Server**:
+   ```bash
+   npm start
+   ```
 
-## Get a fresh project
+2. **Test the App**:
+   - Download the Expo Go app on your mobile device.
+   - Scan the QR code displayed in the terminal or on the Expo dashboard to run the app on your device.
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## **Configuration**
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. Replace `<pi-ip-address>` and `<port>` in your `Dashboard.js` with the IP address and port of your Raspberry Pi backend server:
+   ```javascript
+   const url = "http://<pi-ip-address>:<port>";
+   ```
 
-## Learn more
+2. Configure MQTT broker credentials in `Notifications.js` if applicable:
+   ```javascript
+   const options = {
+     username: '<your-username>',
+     password: '<your-password>',
+   };
+   ```
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## **Contributions**
 
-## Join the community
+Contributions are always welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add feature name"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request.
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## **Contact**
+
+For questions, suggestions, or feedback:
+- **Email**: [farahabdirazak13@gmail.com](mailto:farahabdirazak13@gmail.com)
+- **GitHub**: [Abdirazakf](https://github.com/Abdirazakf)
