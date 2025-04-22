@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, VStack, Heading, Text, HStack, Button, useColorMode } from 'native-base';
 import { ScaledSheet, moderateScale } from 'react-native-size-matters';
-import { WebView } from 'react-native-webview'; // <-- Import WebView
+import { WebView } from 'react-native-webview';
 
 const Dashboard = () => {
   const { colorMode } = useColorMode();
@@ -52,7 +52,7 @@ const Dashboard = () => {
           {/* Embed the stream via WebView */}
           <Box borderWidth={1} borderColor="gray.300" width="100%" height={moderateScale(200)}>
             <WebView
-              source={{ uri: 'http://192.168.1.144:8889/cam1' }}
+              source={{ uri: 'https://genuine-vital-pheasant.ngrok-free.app/cam_with_audio/' }}
               style={{ flex: 1 }}
               javaScriptEnabled
               domStorageEnabled
@@ -101,7 +101,6 @@ const Dashboard = () => {
 };
 
 const styles = ScaledSheet.create({
-  // Add any style customizations here if needed
 });
 
 export default Dashboard;

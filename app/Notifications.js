@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, VStack, Heading, Text, ScrollView, Button, useColorMode } from 'native-base';
 import { moderateScale } from 'react-native-size-matters';
-// IMPORTANT: Works best with mqtt@4.2.8
 import mqtt from 'mqtt/dist/mqtt';
 
 let notificationId = 0;
@@ -11,7 +10,6 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // Use wss:// for WebSocket connections
     const brokerUrl = 'wss://693754a8789c4419b4d760a2653cd86e.s1.eu.hivemq.cloud';
     const options = {
       username: 'gp4pi',
@@ -19,16 +17,13 @@ const Notifications = () => {
       reconnectPeriod: 1000,
     };
 
-    // mqtt.connect should now be defined if you're on mqtt@4.2.8
     const client = mqtt.connect(brokerUrl, options);
 
     client.on('connect', () => {
       console.log('Connected to MQTT broker');
-      // Subscribe to your topic
       client.subscribe('baby_cry/classification');
     });
 
-    // Listen for incoming messages
     client.on('message', (topic, message) => {
       setNotifications((prev) => [
         ...prev,
@@ -36,11 +31,9 @@ const Notifications = () => {
       ]);
     });
 
-    // Cleanup: end the connection when the component unmounts
     return () => client.end();
   }, []);
 
-  // Clear notifications list
   const clearNotifications = () => setNotifications([]);
 
   return (

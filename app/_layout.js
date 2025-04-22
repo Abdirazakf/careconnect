@@ -75,9 +75,9 @@ function TabNavigator() {
         },
       })}
     >
-      {/* The main route is now "index" instead of "Dashboard" */}
       <Tabs.Screen name="index" options={{ title: 'Dashboard' }} />
       <Tabs.Screen name="Notifications" options={{ title: 'Notifications' }} />
+      <Tabs.Screen name="Recordings" options={{ title: 'Recordings' }} />
       <Tabs.Screen name="Settings" options={{ title: 'Settings' }} />
     </Tabs>
   );
