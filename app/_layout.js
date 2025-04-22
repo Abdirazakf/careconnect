@@ -79,6 +79,9 @@ function TabNavigator() {
       <Tabs.Screen name="Notifications" options={{ title: 'Notifications' }} />
       <Tabs.Screen name="Recordings" options={{ title: 'Recordings' }} />
       <Tabs.Screen name="Settings" options={{ title: 'Settings' }} />
+      <Tabs.Screen name="VideoPlayer" options={{ tabBarButton: () => null,
+        headerShown: false,
+       }} />
     </Tabs>
   );
 }
