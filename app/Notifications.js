@@ -47,8 +47,8 @@ const Notifications = () => {
     >
       <Heading
         color={colorMode === 'dark' ? 'white' : 'black'}
-        fontSize={moderateScale(20, 0.6)} // Adjusted scaling factor
-        marginBottom={verticalScale(12)} // Use verticalScale for vertical spacing
+        fontSize={moderateScale(20, 0.6)}
+        marginBottom={verticalScale(12)}
       >
         Notifications
       </Heading>
@@ -73,7 +73,7 @@ const Notifications = () => {
               marginBottom={verticalScale(8)}
             >
               <Text
-                fontSize={moderateScale(14, 0.6)} // Adjust font size
+                fontSize={moderateScale(14, 0.6)}
                 color={colorMode === 'dark' ? 'white' : 'primary.800'}
               >
                 {notif.message}

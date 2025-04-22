@@ -13,8 +13,8 @@ import {
 import { Video } from 'expo-av';
 
 const BUCKET_NAME = 'videouploads2552';
-const REGION      = 'us-east-1';    // **plain ASCII hyphens**
-const PREFIX      = '';             // leave blank if your .mp4s are at the bucket root
+const REGION      = 'us-east-1'; 
+const PREFIX      = '';
 const LIST_URL    = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com?list-type=2${PREFIX?`&prefix=${PREFIX}`:''}`;
 
 export default function Recordings() {
