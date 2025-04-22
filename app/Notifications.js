@@ -10,7 +10,7 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const brokerUrl = 'wss://693754a8789c4419b4d760a2653cd86e.s1.eu.hivemq.cloud';
+    const brokerUrl = 'wss://693754a8789c4419b4d760a2653cd86e.s1.eu.hivemq.cloud:8884/mqtt';
     const options = {
       username: 'gp4pi',
       password: 'Group4pi',
@@ -22,6 +22,7 @@ const Notifications = () => {
     client.on('connect', () => {
       console.log('Connected to MQTT broker');
       client.subscribe('baby_cry/classification');
+      client.subscribe('baby_monitor/obstruction'); // Subscribe to the face-down detection topic
     });
 
     client.on('message', (topic, message) => {
