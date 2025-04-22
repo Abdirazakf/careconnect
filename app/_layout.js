@@ -1,10 +1,9 @@
-// app/_layout.js
 import React from 'react';
 import 'react-native-url-polyfill/auto';
 import { Buffer } from 'buffer';
 import process from 'process';
 
-// Polyfill setup for MQTT, if needed
+// Polyfill setup for MQTT
 global.Buffer = global.Buffer || Buffer;
 global.process = global.process || process;
 
@@ -53,7 +52,6 @@ function TabNavigator() {
 
   return (
     <Tabs
-      // We don't need initialRouteName anymore because "index" is the default root route
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
@@ -64,6 +62,8 @@ function TabNavigator() {
             iconName = focused ? 'notifications' : 'notifications-outline';
           } else if (route.name === 'Settings') {
             iconName = focused ? 'settings' : 'settings-outline';
+          } else if (route.name === 'Recordings') {
+            iconName = focused ? 'videocam' : 'videocam-outline';
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },

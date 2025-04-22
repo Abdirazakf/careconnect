@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, VStack, Heading, Text, HStack, Button, useColorMode } from 'native-base';
-import { ScaledSheet, moderateScale } from 'react-native-size-matters';
+import { ScaledSheet, moderateScale, verticalScale } from 'react-native-size-matters';
 import { WebView } from 'react-native-webview';
 
 const Dashboard = () => {
@@ -26,6 +26,7 @@ const Dashboard = () => {
           color={colorMode === 'dark' ? 'white' : 'black'}
           fontSize={moderateScale(18)}
           marginBottom={moderateScale(10)}
+          paddingTop={verticalScale(40)}
         >
           Dashboard
         </Heading>

@@ -64,6 +64,7 @@ export default function Recordings() {
   return (
     <Box flex={1}
          bg={colorMode === 'dark' ? 'gray.800' : 'gray.50'}
+         paddingTop={10}
          p={4}>
       <Heading mb={4}
                color={colorMode === 'dark' ? 'white' : 'black'}>

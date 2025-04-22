@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, VStack, Heading, Text, ScrollView, Button, useColorMode } from 'native-base';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale, verticalScale } from 'react-native-size-matters';
 import mqtt from 'mqtt/dist/mqtt';
 
 let notificationId = 0;
@@ -22,7 +22,8 @@ const Notifications = () => {
     client.on('connect', () => {
       console.log('Connected to MQTT broker');
       client.subscribe('baby_cry/classification');
-      client.subscribe('baby_monitor/obstruction'); // Subscribe to the face-down detection topic
+      client.subscribe('baby_monitor/obstruction');
+      client.subscribe('baby_gas/sensor');
     });
 
     client.on('message', (topic, message) => {
@@ -42,34 +43,37 @@ const Notifications = () => {
       flex={1}
       bg={colorMode === 'dark' ? 'gray.800' : 'gray.50'}
       padding={moderateScale(10)}
+      paddingTop={verticalScale(40)}
     >
       <Heading
         color={colorMode === 'dark' ? 'white' : 'black'}
-        fontSize={moderateScale(18)}
-        marginBottom={moderateScale(10)}
+        fontSize={moderateScale(20, 0.6)} // Adjusted scaling factor
+        marginBottom={verticalScale(12)} // Use verticalScale for vertical spacing
       >
         Notifications
       </Heading>
       <Button
         onPress={clearNotifications}
-        mb={moderateScale(10)}
+        mb={verticalScale(12)}
         colorScheme={colorMode === 'dark' ? 'light' : 'primary'}
+        padding={verticalScale(10)} // Adjust button padding
+        fontSize={moderateScale(14, 0.6)}
       >
         Clear All Notifications
       </Button>
       <ScrollView showsVerticalScrollIndicator>
-        <VStack space={moderateScale(10)}>
+        <VStack space={verticalScale(10)}>
           {notifications.map((notif) => (
             <Box
               key={notif.id}
               bg={colorMode === 'dark' ? 'gray.700' : 'white'}
               shadow={1}
-              borderRadius={moderateScale(8)}
-              padding={moderateScale(10)}
-              marginBottom={moderateScale(8)}
+              borderRadius={moderateScale(8, 0.6)} // Adjust border radius
+              padding={moderateScale(12, 0.6)} // Adjust padding
+              marginBottom={verticalScale(8)}
             >
               <Text
-                fontSize={moderateScale(12)}
+                fontSize={moderateScale(14, 0.6)} // Adjust font size
                 color={colorMode === 'dark' ? 'white' : 'primary.800'}
               >
                 {notif.message}
