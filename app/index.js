@@ -6,11 +6,9 @@ import mqtt from 'mqtt/dist/mqtt';
 
 const Dashboard = () => {
   const { colorMode } = useColorMode();
-  const [statusColor, setStatusColor] = useState('gray.400'); // default neutral colour
-
-  // ———————————————————————————————————————————
-  // Subscribe to baby_monitor/status and map incoming text → theme colours
-  // ———————————————————————————————————————————
+  const [statusColor, setStatusColor] = useState('gray.400');
+  
+  // Subscribe to baby_monitor/status and map colors
   useEffect(() => {
     const brokerUrl = 'wss://693754a8789c4419b4d760a2653cd86e.s1.eu.hivemq.cloud:8884/mqtt';
     const options = {
@@ -67,7 +65,7 @@ const Dashboard = () => {
           Manage your live stream and controls from here.
         </Text>
 
-        {/* ——— Live Stream Section ——— */}
+        {/* Live Stream Section */}
         <Box
           bg={colorMode === 'dark' ? 'gray.700' : 'white'}
           shadow={2}
@@ -96,15 +94,15 @@ const Dashboard = () => {
           </Box>
 
           {/* Status indicator */}
-          <Box mt={moderateScale(8)} alignItems="flex-end" width="100%" paddingRight={moderateScale(10)}>
-            <Box w={4} h={4} borderRadius={999} bg={statusColor} />
+          <Box mt={moderateScale(8)} alignItems="flex-end" width="100%">
+            <Box w={4} h={4} borderRadius={999} bg={statusColor} marginRight={5} />
             <Text fontSize={moderateScale(10)} color={colorMode === 'dark' ? 'gray.300' : 'gray.600'} >
               Baby status
             </Text>
           </Box>
         </Box>
 
-        {/* ——— Controls Section ——— */}
+        {/* Controls Section */}
         <Box
           bg={colorMode === 'dark' ? 'gray.700' : 'white'}
           shadow={2}

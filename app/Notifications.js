@@ -57,7 +57,7 @@ const Notifications = () => {
         onPress={clearNotifications}
         mb={verticalScale(12)}
         colorScheme={colorMode === 'dark' ? 'light' : 'primary'}
-        padding={verticalScale(10)} // Adjust button padding
+        padding={verticalScale(10)}
         fontSize={moderateScale(14, 0.6)}
       >
         Clear All Notifications
@@ -69,8 +69,8 @@ const Notifications = () => {
               key={notif.id}
               bg={colorMode === 'dark' ? 'gray.700' : 'white'}
               shadow={1}
-              borderRadius={moderateScale(8, 0.6)} // Adjust border radius
-              padding={moderateScale(12, 0.6)} // Adjust padding
+              borderRadius={moderateScale(8, 0.6)}
+              padding={moderateScale(12, 0.6)}
               marginBottom={verticalScale(8)}
             >
               <Text

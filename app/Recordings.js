@@ -1,27 +1,16 @@
-// app/Recordings.js
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'expo-router';
-import {
-  Box,
-  Heading,
-  FlatList,
-  Spinner,
-  Text,
-  Button,
-  HStack,
-  Pressable,
-  useColorMode
-} from 'native-base';
+import { Box,Heading,FlatList,Spinner,Text,Button,HStack,Pressable,useColorMode } from 'native-base';
 import { moderateScale, verticalScale } from 'react-native-size-matters';
 
 const BUCKET_NAME = 'videouploads2552';
 const REGION      = 'us-east-1';
-const PREFIX      = '';  // set to 'videos/' if your files are in a subfolder
+const PREFIX      = '';
 const LIST_URL    = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com?list-type=2${PREFIX?`&prefix=${PREFIX}`:''}`;
 
-// Convert filenames like "2025-04-22_07-39-32-514942.mp4" into "MM/DD/YYYY H:MM AM/PM"
+// Convert filenames into "MM/DD/YYYY H:MM AM/PM"
 function formatFilename(filename) {
-  // remove extension and trailing ID
+  // Remove file IDs
   const base = filename.replace(/\.mp4$/i, '');
   const withoutId = base.replace(/-\d+$/, '');
   const [datePart, timePart] = withoutId.split('_');
@@ -95,12 +84,22 @@ export default function Recordings() {
       p={4}
       paddingTop={verticalScale(40)}
     >
-      <Heading mb={4} color={colorMode === 'dark' ? 'white' : 'black'}>
+      <Heading 
+         color={colorMode === 'dark' ? 'white' : 'black'}
+         fontSize={moderateScale(20, 0.6)}
+         marginBottom={verticalScale(12)}
+         >
         Recordings
       </Heading>
 
       <HStack mb={4} justifyContent="flex-end">
-        <Button onPress={() => setVideos([])}>
+        <Button 
+          onPress={() => setVideos([])}
+          mb={verticalScale(12)}
+          colorScheme={colorMode === 'dark' ? 'light' : 'primary'}
+          padding={verticalScale(10)}
+          fontSize={moderateScale(14, 0.6)}
+          >
           Clear All Videos
         </Button>
       </HStack>
