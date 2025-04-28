@@ -24,6 +24,7 @@ const Notifications = () => {
       client.subscribe('baby_cry/classification');
       client.subscribe('baby_monitor/obstruction');
       client.subscribe('baby_gas/sensor');
+      client.subscribe('baby_pee/sensor');
     });
 
     client.on('message', (topic, message) => {

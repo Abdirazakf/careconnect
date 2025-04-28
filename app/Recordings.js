@@ -16,8 +16,27 @@ import { moderateScale, verticalScale } from 'react-native-size-matters';
 
 const BUCKET_NAME = 'videouploads2552';
 const REGION      = 'us-east-1';
-const PREFIX      = '';
+const PREFIX      = '';  // set to 'videos/' if your files are in a subfolder
 const LIST_URL    = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com?list-type=2${PREFIX?`&prefix=${PREFIX}`:''}`;
+
+// Convert filenames like "2025-04-22_07-39-32-514942.mp4" into "MM/DD/YYYY H:MM AM/PM"
+function formatFilename(filename) {
+  // remove extension and trailing ID
+  const base = filename.replace(/\.mp4$/i, '');
+  const withoutId = base.replace(/-\d+$/, '');
+  const [datePart, timePart] = withoutId.split('_');
+  if (!datePart || !timePart) return filename;
+
+  const [year, month, day] = datePart.split('-');
+  const [h, m] = timePart.split('-');
+  let hour = parseInt(h, 10);
+  const minute = parseInt(m, 10);
+  const suffix = hour >= 12 ? 'PM' : 'AM';
+  const displayHour = hour % 12 || 12;
+  const displayMinute = minute.toString().padStart(2, '0');
+
+  return `${month}/${day}/${year} ${displayHour}:${displayMinute} ${suffix}`;
+}
 
 export default function Recordings() {
   const { colorMode } = useColorMode();
@@ -38,11 +57,14 @@ export default function Recordings() {
           return '';
         });
 
-        const list = keys.map(key => ({
-          key,
-          name: key.split('/').pop(),
-          url:  `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${key}`
-        }));
+        const list = keys.map(key => {
+          const rawName = key.split('/').pop();
+          return {
+            key,
+            name: formatFilename(rawName),
+            url:  `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${key}`
+          };
+        });
 
         if (mounted) {
           setVideos(list);

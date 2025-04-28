@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, VStack, Heading, Text, HStack, Button, useColorMode } from 'native-base';
 import { ScaledSheet, moderateScale, verticalScale } from 'react-native-size-matters';
 import { WebView } from 'react-native-webview';
+import mqtt from 'mqtt/dist/mqtt';
 
 const Dashboard = () => {
   const { colorMode } = useColorMode();
+  const [statusColor, setStatusColor] = useState('gray.400'); // default neutral colour
+
+  // ———————————————————————————————————————————
+  // Subscribe to baby_monitor/status and map incoming text → theme colours
+  // ———————————————————————————————————————————
+  useEffect(() => {
+    const brokerUrl = 'wss://693754a8789c4419b4d760a2653cd86e.s1.eu.hivemq.cloud:8884/mqtt';
+    const options = {
+      username: 'gp4pi',
+      password: 'Group4pi',
+      reconnectPeriod: 1000,
+    };
+
+    const client = mqtt.connect(brokerUrl, options);
+
+    client.on('connect', () => {
+      console.log('Connected to MQTT broker (status)');
+      client.subscribe('baby_monitor/status');
+    });
+
+    client.on('message', (_topic, payload) => {
+      const msg = payload.toString().trim().toLowerCase();
+      const map = {
+        green: 'green.400',
+        red: 'red.500',
+        yellow: 'yellow.400',
+      };
+      setStatusColor(map[msg] ?? 'gray.400'); // fall back to neutral grey
+    });
+
+    return () => client.end();
+  }, []);
 
   const sendCommand = async (command) => {
     try {
@@ -34,7 +67,7 @@ const Dashboard = () => {
           Manage your live stream and controls from here.
         </Text>
 
-        {/* Live Stream Section */}
+        {/* ——— Live Stream Section ——— */}
         <Box
           bg={colorMode === 'dark' ? 'gray.700' : 'white'}
           shadow={2}
@@ -53,7 +86,7 @@ const Dashboard = () => {
           {/* Embed the stream via WebView */}
           <Box borderWidth={1} borderColor="gray.300" width="100%" height={moderateScale(200)}>
             <WebView
-              source={{ uri: 'https://genuine-vital-pheasant.ngrok-free.app/cam_with_audio/' }}
+              source={{ uri: 'http://192.168.137.178:8889/cam_with_audio/' }}
               style={{ flex: 1 }}
               javaScriptEnabled
               domStorageEnabled
@@ -61,9 +94,17 @@ const Dashboard = () => {
               allowsInlineMediaPlayback
             />
           </Box>
+
+          {/* Status indicator */}
+          <Box mt={moderateScale(8)} alignItems="flex-end" width="100%" paddingRight={moderateScale(10)}>
+            <Box w={4} h={4} borderRadius={999} bg={statusColor} />
+            <Text fontSize={moderateScale(10)} color={colorMode === 'dark' ? 'gray.300' : 'gray.600'} >
+              Baby status
+            </Text>
+          </Box>
         </Box>
 
-        {/* Controls Section */}
+        {/* ——— Controls Section ——— */}
         <Box
           bg={colorMode === 'dark' ? 'gray.700' : 'white'}
           shadow={2}
@@ -101,7 +142,6 @@ const Dashboard = () => {
   );
 };
 
-const styles = ScaledSheet.create({
-});
+const styles = ScaledSheet.create({});
 
 export default Dashboard;
